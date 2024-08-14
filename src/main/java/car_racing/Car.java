@@ -23,5 +23,8 @@ public class Car {
     public int getRandomNum() {
         return this.randomNum;
     }
+    public int getRaceScore() {
+        return raceScore;
+    }
 
 }

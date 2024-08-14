@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -28,7 +27,7 @@ public class StringAddCalculator {
         }
 
         List<String> numList = arrayToList(tokens);
-        if(!isIntegerNegative(numList)) throw new RuntimeException();
+        if(containsNegative(numList)) throw new RuntimeException();
 
         return sum(numList);
     }
@@ -42,10 +41,14 @@ public class StringAddCalculator {
     public static boolean isNull(String text) {
         return (text == null) || (text.isEmpty());
     }
-    public static boolean isIntegerNegative(List<String> strings) {
-        for (String string : strings) {
-            if ((Integer.parseInt(string) < 0)) return false;
-        }
-        return true;
+    // 메인 메소드
+    public static boolean containsNegative(List<String> list) {
+        return list.stream().mapToInt(Integer::parseInt).anyMatch(StringAddCalculator::isNegative);
     }
+
+    // 음수인지 판별하는 메소드
+    private static boolean isNegative(int number) {
+        return number < 0;
+    }
+
 }

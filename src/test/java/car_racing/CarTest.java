@@ -22,8 +22,11 @@ class CarTest {
     @Test
     @DisplayName("자동차의 랜덤숫자가 4 이상일 때 점수에 축적")
     void car_addScore() {
-        assertThat(car1.getCurrentScore(2, 0)).isEqualTo(0);
-        assertThat(car2.getCurrentScore(4,2)).isEqualTo(3);
+        car1.addScore(2, 0);
+        car2.addScore(4,2);
+        assertThat(car1.getRaceScore()).isEqualTo(0);
+        assertThat(car2.getRaceScore()).isEqualTo(3);
     }
+
 
 }

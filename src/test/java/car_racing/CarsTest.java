@@ -18,14 +18,17 @@ class CarsTest {
     }
 
     @Test
-    @DisplayName("1번 경주를 진행할 때 모두 0 또는 1")
+    @DisplayName("3번를 진행할 때 가질 수 있는 max값은 회차 수와 같다")
     void car_racing() {
         String[] names = {"pobi", "crong", "honux"};
         Cars cars = new Cars(names);
-        List<Car> carResult = cars.play();
-        assertThat(carResult.get(0).getRaceScore()).isLessThanOrEqualTo(1); // 1이하
-        assertThat(carResult.get(1).getRaceScore()).isLessThanOrEqualTo(1); // 1이하
-        assertThat(carResult.get(2).getRaceScore()).isLessThanOrEqualTo(1); // 1이하
+        for (int i = 1; i <= 3; i++) {
+            List<Car> carResult = cars.play(); // 1~3회 진행
+            assertThat(carResult.get(0).getRaceScore()).isLessThanOrEqualTo(i); // i이하
+            assertThat(carResult.get(1).getRaceScore()).isLessThanOrEqualTo(i); // i이하
+            assertThat(carResult.get(2).getRaceScore()).isLessThanOrEqualTo(i);  // i이하
+        }
+
     }
 
 }

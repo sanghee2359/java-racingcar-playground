@@ -31,4 +31,15 @@ class CarsTest {
 
     }
 
+    @Test
+    @DisplayName(("종료 후 가장 높은 raceScore 을 보유한 List<Car> 출력 - 무조건 1개 이상"))
+    void find_highestScore() {
+        String[] names = {"pobi", "crong", "honux"};
+        Cars cars = new Cars(names);
+        for (int i = 1; i <= 3; i++) {
+            cars.play(); // 3회 진행
+        }
+        assertThat(cars.findHighestScore()).isNotNull();
+    }
+
 }

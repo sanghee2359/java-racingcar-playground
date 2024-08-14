@@ -16,13 +16,13 @@ public class CarRacing {
         int racingNum = sc.nextInt();
 
         System.out.println("실행결과");
-        PrintResult current = null;
+        PrintResult print = null;
         while (racingNum > 0) {
-            current = cars.printCurrent(cars.play());
+            print = cars.printCurrent(cars.play());
             racingNum--;
         }
 
-        if(current != null) current.finalResult(current.findHighestScore());
+        if(print != null) print.finalResult(cars.findHighestScore());
 
     }
     public CarRacing() {

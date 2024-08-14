@@ -1,7 +1,10 @@
 package car_racing;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.OptionalInt;
+import java.util.stream.Collectors;
 
 public class Cars {
     private final List<Car> cars;
@@ -31,6 +34,18 @@ public class Cars {
             result.writeCurrentResult(c);
         }System.out.println();
         return result;
+    }
+    // 최대값 찾기
+    public List<Car> findHighestScore() {
+        OptionalInt maxScore = cars.stream()
+                .mapToInt(Car::getRaceScore)
+                .max();
+
+        return maxScore.isPresent() ?
+                cars.stream()
+                        .filter(car -> car.getRaceScore() == maxScore.getAsInt())
+                        .collect(Collectors.toList())
+                : Collections.emptyList(); // 최대값이 없으면 빈 리스트 반환
     }
 
 }

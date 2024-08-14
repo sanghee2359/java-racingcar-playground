@@ -20,18 +20,6 @@ public class PrintResult {
         System.out.println(sb);
     }
 
-    // 최대값 찾기
-    public List<Car> findHighestScore() {
-        OptionalInt maxScore = result.stream()
-                .mapToInt(Car::getRaceScore)
-                .max();
-
-        return maxScore.isPresent() ?
-                result.stream()
-                        .filter(car -> car.getRaceScore() == maxScore.getAsInt())
-                        .collect(Collectors.toList())
-                : Collections.emptyList(); // 최대값이 없으면 빈 리스트 반환
-    }
     public void finalResult(List<Car> result) {
         if (result.isEmpty()) {
             return;
